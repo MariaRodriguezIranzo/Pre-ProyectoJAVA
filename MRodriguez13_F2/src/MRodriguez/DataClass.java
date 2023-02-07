@@ -5,10 +5,7 @@ package MRodriguez;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author josemonpes
- */
+
 public class DataClass {
 
     public static JFrame JF1= new JFrameMain();

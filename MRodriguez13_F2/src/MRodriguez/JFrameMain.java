@@ -10,16 +10,22 @@ package MRodriguez;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author josemonpes
- */
+
 public class JFrameMain extends javax.swing.JFrame {
 
+    String ok = "";
     /**
      * Creates new form JFrameMain
      */
@@ -127,17 +133,29 @@ public class JFrameMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin1ActionPerformed
-        String Usuario, Password;
-        Usuario= "Admin";
-        Password = "Monlau";
-
-        if (Usuario.equals(jTextFieldUser.getText()) && Password.equals(jTextFieldPassword.getText())) {
+        String Usuario, Password, Control;
+        Control = "Login";
+        Usuario= jTextFieldUser.getText();
+        Password = jTextFieldPassword.getText();
+        try { 
+            functionCRUDLOGIN(Control,Password,Usuario);
+            
+            if(ok.equals("11")){
+                DataClass.gotoAnotherJFrame(this, DataClass.JF4);
+            }
+            else if(ok.equals(51)){ 
+                JOptionPane.showMessageDialog(null, "Try Again", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*if (Usuario.equals(jTextFieldUser.getText()) && Password.equals(jTextFieldPassword.getText())) {
            JFrameMainMenu Sl = new JFrameMainMenu();
            Sl.setVisible(true);
            dispose();
         }else{
-           JOptionPane.showMessageDialog(this, "ERROR, , re-enter login and password");
-        }
+           
+        }*/
     }//GEN-LAST:event_jButtonLogin1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -178,6 +196,32 @@ public class JFrameMain extends javax.swing.JFrame {
                 new JFrameMain().setVisible(true);
             }
         });
+    }
+    
+    private String functionCRUDLOGIN(String Control, String password, String user) throws MalformedURLException, IOException  {
+        String phpFileName = "controllerDB.php";
+        String path = "http://localhost/M13/P1/";
+        
+        String query = "";
+        query += "?Control=" + Control;
+        query += "&D01=" + user;
+        query += "&D02=" + password;
+
+
+        String urlLink = path + phpFileName + query;
+        URL url = new URL(urlLink);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        StringBuffer sb = new StringBuffer();
+        String line;
+        while ((line = in.readLine()) != null) {
+            sb.append(line);
+            System.out.println(line);
+            ok = line;
+        }
+        return sb.toString();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

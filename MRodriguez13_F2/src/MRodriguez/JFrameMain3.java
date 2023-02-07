@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package MRodriguez;
 
 import java.awt.Color;
@@ -34,7 +30,6 @@ public class JFrameMain3 extends javax.swing.JFrame {
         jPanel1.setLocation(panelX, panelY);
         getContentPane().setBackground(new Color(133, 47, 178));
 
-//        getContentPane().setBackground(new Color(190, 140, 217));
         this.setLocationRelativeTo(this);
 
         jPanel1.setBackground(new Color(190, 140, 217));

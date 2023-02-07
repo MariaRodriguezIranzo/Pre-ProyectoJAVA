@@ -8,10 +8,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- *
- * @author Usuario
- */
 public class JFrameMainMenu extends javax.swing.JFrame {
 
     /**

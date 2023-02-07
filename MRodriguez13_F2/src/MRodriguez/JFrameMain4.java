@@ -8,10 +8,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- *
- * @author Usuario
- */
 public class JFrameMain4 extends javax.swing.JFrame {
 
     /**

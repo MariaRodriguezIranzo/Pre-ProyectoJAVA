@@ -20,10 +20,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-/**
- *
- * @author josemonpes
- */
 public class JFrameMain2 extends javax.swing.JFrame {
 
     /**
