@@ -26,9 +26,7 @@ import javax.swing.JOptionPane;
 public class JFrameMain extends javax.swing.JFrame {
 
     String ok = "";
-    /**
-     * Creates new form JFrameMain
-     */
+  
     public JFrameMain() {
         initComponents();
         initConfig();
@@ -141,21 +139,14 @@ public class JFrameMain extends javax.swing.JFrame {
             functionCRUDLOGIN(Control,Password,Usuario);
             
             if(ok.equals("11")){
-                DataClass.gotoAnotherJFrame(this, DataClass.JF4);
+                  DataClass.gotoAnotherJFrame(this,DataClass.JF4);
             }
-            else if(ok.equals(51)){ 
+            else if(ok.equals("51")){ 
                 JOptionPane.showMessageDialog(null, "Try Again", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (IOException ex) {
             Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*if (Usuario.equals(jTextFieldUser.getText()) && Password.equals(jTextFieldPassword.getText())) {
-           JFrameMainMenu Sl = new JFrameMainMenu();
-           Sl.setVisible(true);
-           dispose();
-        }else{
-           
-        }*/
     }//GEN-LAST:event_jButtonLogin1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
